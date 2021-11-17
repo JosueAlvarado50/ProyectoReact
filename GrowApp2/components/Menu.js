@@ -262,9 +262,10 @@ function Menu({ navigation }) {
             <Button
               style={{ width: "100%", height: "100%" }}
               backgroundColor="#94247c"
-              onPress={() => {
-                console.log("hello");
-              }}
+             // onPress={() => {
+             //   console.log("hello");
+             // }}
+             onPress={() => navigation.navigate('calendar')}
             >
               <Image
                 //source={require('../assets/semillas.png')}

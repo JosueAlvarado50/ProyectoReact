@@ -39,7 +39,7 @@ function Inicio({ navigation }) {
                     w="250"
                     />
                     <Heading alignContent="center">
-                    Grow jotillo
+                    Grow yoshuna jotillo! 
                     <Heading color="emerald.500">App</Heading>
                     </Heading>
                     <Text mt="3" fontWeight="medium">
