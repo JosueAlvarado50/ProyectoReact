@@ -27,6 +27,8 @@ import { Center, Heading, Text, Container, NativeBaseProvider, Box,ImageBackgrou
 import Login from './components/Login'
 import Inicio from './components/Inicio';
 import Menu from './components/Menu';
+import Calendar from './components/Calendario';
+
 
 import axios, {Axios} from 'axios';
 import { NavigationContainer } from '@react-navigation/native';
@@ -66,6 +68,8 @@ export default function App( ) {
             <Stack.Screen name="login" component={Login} />
             <Stack.Screen name="ph" component={viewPh} />
             <Stack.Screen name="plants" component={ViewPlants} />
+            <Stack.Screen name="calendar" component={Calendar} />
+
             
           </Stack.Navigator>
            
