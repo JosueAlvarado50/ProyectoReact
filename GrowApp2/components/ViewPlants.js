@@ -57,7 +57,7 @@ function ViewPlants(props) {
 
   useEffect(() => {
       const getData = async () =>{
-      const response = await axios.post('http://172.17.204.47/indexPlants.php')
+      const response = await axios.post('http://192.168.100.3/indexPlants.php')
       setUsers(response.data)
       console.log("USER", users)    
       }

@@ -22,7 +22,7 @@ function Login({navigation}) {
         formData.append('nickname', value.nickname)
         formData.append('password', value.password)
         const response = await axios.post(
-            'http://172.17.204.47/index.php',
+            'http://192.168.100.3/index.php',
             formData,
             {headers:{'Content-Type': 'multipart/form-data'}}
         )
