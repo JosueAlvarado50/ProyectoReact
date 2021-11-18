@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   AspectRatio,
+  View,
   AntDesign,
   Divider,
   ScrollView,
@@ -38,88 +39,135 @@ var ph = require("../assets/PH.png");
 var humedad = require("../assets/humedad.png");
 var calendario = require("../assets/calendario.png");
 var Luminosidad = require("../assets/icono_luminosidad.png");
-
+import axios, { Axios } from "axios";
 function viewPh({ navigation }) {
+  const[isHidden, setIsHidden] = useState(false)
+  const[value, setValue] = useState({
+      id:'',
+      cantidad_ph:'',
+      fecha_hora:''
+  });
+
+  const [users, setUsers] = useState([])
+  const formData = new FormData();
+  formData.append('id', value.id)
+  formData.append('cantidad_ph', value.cantidad_ph)
+  formData.append('fecha_hora', value.fecha_hora)
+  
+  useEffect(() => {
+    const getData = async () =>{
+    const response = await axios.post('http://192.168.100.3/index_ph.php')
+    setUsers(response.data)
+    console.log("USER", users)    
+    }
+    getData()
+}, []);
+
+
   return (
-    <>
+  
       <ImageBackground
         style={{ width: "100%", height: "100%", backgroundColor: "#111827" }}
       >
         <ScrollView>
-          <Box flex={15} p="2" alignItems="center" justifyContent="center">
-            <Box
-              rounded="lg"
-              overflow="hidden"
-              width="72"
-              shadow={1}
-              _light={{ backgroundColor: "gray.50" }}
-              _dark={{ backgroundColor: "gray.700" }}
-            >
-              <Box>
-                <AspectRatio ratio={16 / 9}>
-                  <Image
-                    source={{
-                      uri: "https://jardineriaplantasyflores.com/wp-content/uploads/2014/12/C%C3%B3mo-medir-el-pH.jpg",
+          <View
+            style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+          >
+            {users.map((user) => (
+              <Box
+                maxW="80"
+                margin="5"
+                rounded="lg"
+                overflow="hidden"
+                borderColor="coolGray.200"
+                borderWidth="1"
+                _dark={{
+                  borderColor: "coolGray.600",
+                  backgroundColor: "gray.700",
+                }}
+                _web={{
+                  shadow: 2,
+                  borderWidth: 0,
+                }}
+                _light={{
+                  backgroundColor: "gray.50",
+                }}
+              >
+                <Box>
+                  <AspectRatio w="100%" ratio={16 / 9}>
+                    <Image
+                      source={ph}
+                      alt="image"
+                    />
+                  </AspectRatio>
+                  <Center
+                    bg="violet.500"
+                    _dark={{
+                      bg: "violet.400",
                     }}
-                    alt="image"
-                  />
-                </AspectRatio>
-              </Box>
-              <Stack p="10" space={2} bg="#48546c">
-                <Stack space={2}>
-                  
-                  <Heading size="sm" ml="-1" color="coolGray.100" textAlign='justify'>
-                    Medir el pH de la tierra sirve para conocer el grado de
-                    acidez o alcalinidad de nuestros suelos,
-                  </Heading>
-                  <Text
-                    fontSize="xs"
-                    _light={{ color: "violet.500" }}
-                    _dark={{ color: "violet.300" }}
-                    fontWeight="500"
-                    ml="-0.5"
-                    mt="-1"
+                    _text={{
+                      color: "warmGray.50",
+                      fontWeight: "700",
+                      fontSize: "xs",
+                    }}
+                    position="absolute"
+                    bottom="0"
+                    px="3"
+                    py="1.5"
                   >
-                    The Silicon Valley of India.
-                  </Text>
-                </Stack>
-                <Text fontWeight="400" color="coolGray.100" textAlign='justify'>
-                  El pH se define como la cantidad de iones de
-                  hidrógeno libres presentes en el suelo, y se expresa en el
-                  concepto de acidez, de acuerdo con la siguiente escala, que va
-                  de 0 a 14:
-                </Text>
-                <Text fontWeight="400" color="coolGray.100"lineHeight= "13" >
-                  &gt;   Ácido: hasta 6,5.
-                </Text>
-                <Text fontWeight="400" color="coolGray.100" lineHeight= "13">
-                  &gt;   Neutro: 7.
-                </Text>
-                <Text fontWeight="400" color="coolGray.100" lineHeight= "13">
-                  &gt;   Alcalino: a partir de 7,5.
-                </Text>
-
-                <HStack
-                  alignItems="center"
-                  space={4}
-                  justifyContent="space-between"
-                >
-                  <Center  p="1">
-                  <Box  bg="primary.400" p="12" rounded="lg">
-                    <Text  fontSize="xs" color="darkBlue.500">0</Text>
                     
-                  </Box>
+                   {user.cantidad_ph}
                   </Center>
-                  
-                  
-                  
-                </HStack>
-              </Stack>
-            </Box>
-          </Box>
+                </Box>
+                <Stack p="4" space={3}>
+                  <Stack space={2}>
+                    <Heading size="md" ml="-1">
+                      The Garden City
+                    </Heading>
+                    <Text
+                      fontSize="xs"
+                      _light={{
+                        color: "violet.500",
+                      }}
+                      _dark={{
+                        color: "violet.400",
+                      }}
+                      fontWeight="500"
+                      ml="-0.5"
+                      mt="-1"
+                    >
+                      The Silicon Valley of India.
+                    </Text>
+                  </Stack>
+                  <Text fontWeight="400">
+                    Bengaluru (also called Bangalore) is the center of India's
+                    high-tech industry. The city is also known for its parks and
+                    nightlife.
+                  </Text>
+                  <HStack
+                    alignItems="center"
+                    space={4}
+                    justifyContent="space-between"
+                  >
+                    <HStack alignItems="center">
+                      <Text
+                        color="coolGray.600"
+                        _dark={{
+                          color: "warmGray.200",
+                        }}
+                        fontWeight="400"
+                      >
+                        6 mins ago
+                      </Text>
+                    </HStack>
+                  </HStack>
+                </Stack>
+              </Box>
+            ))}
+          </View>
         </ScrollView>
       </ImageBackground>
-    </>
+    
   );
 }
 
