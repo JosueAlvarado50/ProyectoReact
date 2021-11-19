@@ -28,6 +28,7 @@ import Login from './components/Login'
 import Inicio from './components/Inicio';
 import Menu from './components/Menu';
 import Calendar from './components/Calendario';
+import viewTemp from './components/viewTemp';
 
 
 import axios, {Axios} from 'axios';
@@ -69,6 +70,7 @@ export default function App( ) {
             <Stack.Screen name="ph" component={viewPh} />
             <Stack.Screen name="plants" component={ViewPlants} />
             <Stack.Screen name="calendar" component={Calendar} />
+            <Stack.Screen name="temp" component={viewTemp} />
 
             
           </Stack.Navigator>

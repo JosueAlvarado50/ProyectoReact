@@ -146,9 +146,7 @@ function Menu({ navigation }) {
               style={{ width: "100%", height: "100%" }}
               //colorScheme="transparent"
               backgroundColor="#f38424"
-              onPress={() => {
-                console.log("hello");
-              }}
+              onPress={() => navigation.navigate('temp')}
             >
               <Image
                 //source={require('../assets/semillas.png')}
@@ -235,9 +233,7 @@ function Menu({ navigation }) {
               style={{ width: "100%", height: "100%" }}
               //colorScheme="transparent"
               backgroundColor="#24a46c"
-              onPress={() => {
-                console.log("hello");
-              }}
+              onPress={() => navigation.navigate('viewTemp')}
             >
               <Image
                 //source={require('../assets/semillas.png')}

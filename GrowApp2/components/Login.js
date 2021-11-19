@@ -14,26 +14,22 @@ function Login({navigation}) {
     const[isHidden, setIsHidden] = useState(false)
     const[value, setValue] = useState({
         nickname:'',
-        password:''
-    })
+        password:''})
+        
     const handleClick = () => setIsHidden(!isHidden)
     const handleSubmit = async () => {
         const formData = new FormData();
         formData.append('nickname', value.nickname)
         formData.append('password', value.password)
         const response = await axios.post(
-            'http://192.168.100.3/index.php',
+            'http://192.168.100.3/index.php?',
             formData,
             {headers:{'Content-Type': 'multipart/form-data'}}
         )
             console.log(response.data)
             let isUser = response.data
             console.log(typeof(isUser))
-            //if (isUser > 0){
-                
             navigation.navigate('menu')
-            console.log(response.data)
-            //}
     }
     const Submit = () =>{
         return <Button  backgroundColor="green.400" onPress={(handleSubmit)}>
