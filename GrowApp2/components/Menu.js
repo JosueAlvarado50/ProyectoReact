@@ -233,7 +233,7 @@ function Menu({ navigation }) {
               style={{ width: "100%", height: "100%" }}
               //colorScheme="transparent"
               backgroundColor="#24a46c"
-              onPress={() => navigation.navigate('viewTemp')}
+              onPress={() => navigation.navigate('viewHumedad')}
             >
               <Image
                 //source={require('../assets/semillas.png')}

@@ -18,19 +18,27 @@ function Login({navigation}) {
         
     const handleClick = () => setIsHidden(!isHidden)
     const handleSubmit = async () => {
-        const formData = new FormData();
-        formData.append('nickname', value.nickname)
-        formData.append('password', value.password)
-        const response = await axios.post(
-            'http://192.168.100.3/index.php?',
-            formData,
-            {headers:{'Content-Type': 'multipart/form-data'}}
-        )
-            console.log(response.data)
-            let isUser = response.data
-            console.log(typeof(isUser))
-            navigation.navigate('menu')
-    }
+        const request = {};
+        request.nickname = value.nickname;
+        request.password = value.password;
+        
+        axios.post('http://192.168.100.3/api/users/login.php', 
+                    request, 
+                    {   'mode': 'cors', 
+                        'headers':
+                        {'Content-Type': 'application/json', 
+                         'Access-Control-Allow-Origin': '*'}
+                    })
+            .then((response) => {
+                console.log(response.data);
+                if (response.data == true) {
+                    navigation.navigate('menu');
+                }
+            }, (error) => {
+                console.log(error);
+            });
+
+    };
     const Submit = () =>{
         return <Button  backgroundColor="green.400" onPress={(handleSubmit)}>
             <Text fontSize="lg" color="white">Login</Text>

@@ -1,14 +1,22 @@
 import React, { useState, useEffect } from "react";
 import {
   AspectRatio,
+  AntDesign,
   View,
+  Divider,
   ScrollView,
   Stack,
+  StatusBar,
+  IconButton,
+  Icon,
+  VStack,
   HStack,
   Image,
   Center,
   Heading,
   Text,
+  Container,
+  NativeBaseProvider,
   Box,
   Button,
 } from "native-base";
@@ -22,24 +30,32 @@ import {
   width,
 } from "styled-system";
 import { ImageBackground } from "react-native";
+
+var temp2 = require("../assets/temp2.png");
+var SecImage = require("../assets/fondo2.jpg");
+var terImage = require("../assets/plants_6.png");
+var semillas = require("../assets/semillas.png");
 var temperatura = require("../assets/temperatura2.png");
-function viewTemp({ navigation }) {
+var ph = require("../assets/PH.png");
+var humedad = require("../assets/humedad.png");
+var calendario = require("../assets/calendario.png");
+var Luminosidad = require("../assets/icono_luminosidad.png");
+
+function viewHumedad({ navigation }) {
   const[isHidden, setIsHidden] = useState(false)
   const[value, setValue] = useState({
       id:'',
-      name:'',
-      cantidad_temp:'',
+      cantidad_hum:'',
       fecha_hora:''
   });
   const [users, setUsers] = useState([])
   const formData = new FormData();
   formData.append('id', value.id)
-  formData.append('cantidad_ph', value.cantidad_temp)
-  formData.append('name', value.name)
+  formData.append('cantidad_hum', value.cantidad_hum)
   formData.append('fecha_hora', value.fecha_hora)
   useEffect(() => {
     const getData = async () =>{
-    const response = await axios.post('http://192.168.100.3/index_temp.php')
+    const response = await axios.post('http://192.168.100.3/index_humedad.php')
     setUsers(response.data)
     console.log("USER", users)    
     }
@@ -77,7 +93,7 @@ function viewTemp({ navigation }) {
             <Box>
               <AspectRatio w="100%" ratio={16 / 9}>
                 <Image
-                  source={temperatura}
+                  source={humedad}
                   alt="image"
                 />
               </AspectRatio>
@@ -98,7 +114,7 @@ function viewTemp({ navigation }) {
                 px="3"
                 py="1.5"
               >
-                {user.cantidad_temp}
+                {user.cantidad_hum}
               </Center>
             </Box>
             <Stack p="4" space={3}>
@@ -150,4 +166,4 @@ function viewTemp({ navigation }) {
   );
 }
 
-export default viewTemp;
+export default viewHumedad;

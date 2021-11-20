@@ -36,6 +36,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import viewPh from './components/viewPh';
 import ViewPlants from './components/ViewPlants';
+import viewHumedad from './components/viewHumedad';
 
 const Stack = createNativeStackNavigator();
 
@@ -71,6 +72,7 @@ export default function App( ) {
             <Stack.Screen name="plants" component={ViewPlants} />
             <Stack.Screen name="calendar" component={Calendar} />
             <Stack.Screen name="temp" component={viewTemp} />
+            <Stack.Screen name="viewHumedad" component={viewHumedad} />
 
             
           </Stack.Navigator>
