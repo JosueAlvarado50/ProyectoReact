@@ -9,8 +9,6 @@ import {
   Center,
   Heading,
   Text,
-  Container,
-  NativeBaseProvider,
   Box,
   Button,
 } from "native-base";
@@ -29,17 +27,19 @@ function viewTemp({ navigation }) {
   const[isHidden, setIsHidden] = useState(false)
   const[value, setValue] = useState({
       id:'',
-      cantidad_ph:'',
+      name:'',
+      cantidad_temp:'',
       fecha_hora:''
   });
   const [users, setUsers] = useState([])
   const formData = new FormData();
   formData.append('id', value.id)
-  formData.append('cantidad_ph', value.cantidad_ph)
+  formData.append('cantidad_ph', value.cantidad_temp)
+  formData.append('name', value.name)
   formData.append('fecha_hora', value.fecha_hora)
   useEffect(() => {
     const getData = async () =>{
-    const response = await axios.post('http://192.168.100.3/index_ph.php')
+    const response = await axios.post('http://192.168.100.3/index_temp.php')
     setUsers(response.data)
     console.log("USER", users)    
     }
@@ -91,14 +91,14 @@ function viewTemp({ navigation }) {
                 _text={{
                   color: "warmGray.50",
                   fontWeight: "700",
-                  fontSize: "8xl",
+                  fontSize: "3xl",
                 }}
                 position="absolute"
                 bottom="0"
                 px="3"
                 py="1.5"
               >
-                {user.cantidad_ph}
+                {user.cantidad_temp}
               </Center>
             </Box>
             <Stack p="4" space={3}>

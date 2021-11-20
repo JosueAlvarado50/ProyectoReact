@@ -12,10 +12,13 @@ import {
   NativeBaseProvider,
 } from "native-base";
 import { MaterialIcons, Ionicons } from "@expo/vector-icons";
+
+var Amaranto = require("../assets/gerAmaranto.jpg")
+var Trigo = require("../assets/gerTrigo.jpg")
+var Rabano = require("../assets/gerRabano.jpg")
+
 const CardPlants = (props) => {
   console.log(props);
-  
-  
   return (
     <Box
       rounded="lg"
@@ -29,7 +32,7 @@ const CardPlants = (props) => {
       <Box>
         <AspectRatio ratio={16 / 9}>
           <Image
-            
+            source={props.cardPlantName}
             alt="image"
             h="162"
             w="290"
