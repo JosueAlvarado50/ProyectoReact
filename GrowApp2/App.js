@@ -54,19 +54,20 @@ export default function App() {
       <NativeBaseProvider>
          <Stack.Navigator initialRouteName="inicio">
           <Stack.Group
-            screenOptions={{ headerStyle: { backgroundColor: "papayawhip" } }}
+            screenOptions={{ headerStyle: { backgroundColor: "#171717" } }}
           >
             <Stack.Screen
               options={{
                 title: "Inicio",
                 headerStyle: {
-                  backgroundColor: "#ec4899",
+                  backgroundColor: "#f0f9ff",
                 },
-                headerTintColor: "#047857",
+                headerTintColor: "#f0f9ff",
                 headerTitleStyle: {
                   fontWeight: "bold",
-                  color: "white"
+                  color: "#171717"
                 },
+                
               }}
               name="inicio"
               component={Inicio}
