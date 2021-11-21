@@ -22,65 +22,93 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 }); */
-import React from 'react';
-import { Center, Heading, Text, Container, NativeBaseProvider, Box,ImageBackground } from 'native-base';
-import Login from './components/Login'
-import Inicio from './components/Inicio';
-import Menu from './components/Menu';
-import Calendar from './components/Calendario';
-import viewTemp from './components/viewTemp';
+import React from "react";
+import {
+  Center,
+  Heading,
+  Text,
+  Container,
+  NativeBaseProvider,
+  Box,
+  ImageBackground,
+} from "native-base";
+import Login from "./components/Login";
+import Inicio from "./components/Inicio";
+import Menu from "./components/Menu";
+import Calendar from "./components/Calendario";
+import viewTemp from "./components/viewTemp";
 
-
-import axios, {Axios} from 'axios';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import viewPh from './components/viewPh';
-import ViewPlants from './components/ViewPlants';
-import viewHumedad from './components/viewHumedad';
+import axios, { Axios } from "axios";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import viewPh from "./components/viewPh";
+import ViewPlants from "./components/ViewPlants";
+import viewHumedad from "./components/viewHumedad";
+import { backgroundColor } from "styled-system";
 
 const Stack = createNativeStackNavigator();
 
-export default function App( ) {
+export default function App() {
   return (
-    
-    <NavigationContainer  >
-        <NativeBaseProvider>
-
-        <Stack.Screen 
-        name="Home"
-        component={Inicio}
-        options={{
-          title: 'My home',
-          headerStyle: {
-            backgroundColor: '#111827',
-          },
-          headerTintColor: '#111827',
-          headerTitleStyle: {
-            fontWeight: 'bold',
-            
-          },
-        }}
-      />
-      
-          
-          <Stack.Navigator initialRouteName="inicio">
-            
-            <Stack.Screen name="menu" component={Menu} />
-            <Stack.Screen color name="inicio" component={Inicio} />
-            <Stack.Screen name="login" component={Login} />
-            <Stack.Screen name="ph" component={viewPh} />
-            <Stack.Screen name="plants" component={ViewPlants} />
-            <Stack.Screen name="calendar" component={Calendar} />
-            <Stack.Screen name="temp" component={viewTemp} />
-            <Stack.Screen name="viewHumedad" component={viewHumedad} />
-
-            
-          </Stack.Navigator>
-           
-          
-          
+    <NavigationContainer>
+      <NativeBaseProvider>
+         <Stack.Navigator initialRouteName="inicio">
+          <Stack.Group
+            screenOptions={{ headerStyle: { backgroundColor: "papayawhip" } }}
+          >
+            <Stack.Screen
+              options={{
+                title: "Inicio",
+                headerStyle: {
+                  backgroundColor: "#ec4899",
+                },
+                headerTintColor: "#047857",
+                headerTitleStyle: {
+                  fontWeight: "bold",
+                  color: "white"
+                },
+              }}
+              name="inicio"
+              component={Inicio}
+            />
+            <Stack.Screen
+              options={{ title: "Login" }}
+              name="login"
+              component={Login}
+            />
+            <Stack.Screen
+              options={{ title: "" }}
+              name="menu"
+              component={Menu}
+            />
+            <Stack.Screen
+              options={{ title: "PH" }}
+              name="ph"
+              component={viewPh}
+            />
+            <Stack.Screen
+              options={{ title: "Plants" }}
+              name="plants"
+              component={ViewPlants}
+            />
+            <Stack.Screen
+              options={{ title: "Calendar" }}
+              name="calendar"
+              component={Calendar}
+            />
+            <Stack.Screen
+              options={{ title: "Temperature" }}
+              name="temp"
+              component={viewTemp}
+            />
+            <Stack.Screen
+              options={{ title: "Humidity" }}
+              name="viewHumedad"
+              component={viewHumedad}
+            />
+          </Stack.Group>
+        </Stack.Navigator>
       </NativeBaseProvider>
     </NavigationContainer>
-    
-  )
+  );
 }

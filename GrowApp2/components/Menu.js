@@ -204,7 +204,7 @@ function Menu({ navigation }) {
             <Button
               style={{ width: "100%", height: "100%" }}
               //colorScheme="transparent"
-              backgroundColor="#3c3cac"
+              backgroundColor="#149ce4"
               onPress={() => navigation.navigate('ph')}>
               <Image
                 //source={require('../assets/semillas.png')}
@@ -334,16 +334,8 @@ function Menu({ navigation }) {
         </Stack>
       </VStack>
     </ScrollView>
-  
-
-
-
-
-
-      </ImageBackground>
+  </ImageBackground>
     </>
   );
 }
-
-
 export default Menu;

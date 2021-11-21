@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import {Image, Center, Heading, Text, Container, NativeBaseProvider, Box, Button, Icon, Stack, Pressable, Input } from 'native-base';
+import {Image, Center, Heading,  Text, Container, NativeBaseProvider,
+     Box, Button, Icon, Stack, Pressable, Input,extendTheme } from 'native-base';
 import axios from 'axios';
 import {MaterialIcons} from "@expo/vector-icons"
 import Inicio from './Inicio';
@@ -40,12 +41,40 @@ function Login({navigation}) {
 
     };
     const Submit = () =>{
-        return <Button  backgroundColor="green.400" onPress={(handleSubmit)}>
+        return <Button colorScheme="lightBlue"
+        variant="rounded" backgroundColor="green.400" onPress={(handleSubmit)}>
             <Text fontSize="lg" color="white">Login</Text>
             </Button>
     }
+    const theme = extendTheme({
+        components:{
+          Button: {
+            variants:{
+              rounded:({ colorScheme })=>{
+                return{
+                  bg: `${colorScheme}.500`,
+                  rounded: "full",
+                }
+              },
+            },
+          },
+          Input: {
+            variants:{
+              rounded:({ colorScheme })=>{
+                return{
+                  bg: `${colorScheme}.100`,
+                  rounded: "full",
+                }
+              },
+            },
+          }
+        },
+      })
+
+
+
     return (
-        <NativeBaseProvider >
+        <NativeBaseProvider theme ={theme} >
         <Box flex={15} bg="#111827"  p="2"  alignItems="center" justifyContent="center">
         <Center  px="3">
             <Container alignSelf="center">
@@ -58,19 +87,19 @@ function Login({navigation}) {
                 h="250"
                 w="250"
               />
-                <Input style={{color:"white"}} size="lg" 
+                <Input colorScheme="info" variant="rounded" style={{color:"#171717"}} size="lg" 
                         InputLeftElement={
                             <Icon as={<MaterialIcons name="person" />} 
                             size={5}
                             ml="2"
-                            color="muted.100"
+                            color="#171717"
                             />
                             
                         } I
                         placeholder="Nickname" 
                     onChangeText={(text) => setValue({ ...value,nickname:text})}
                     />
-                <Input style={{color:"white"}} size="lg" placeholder="Password" 
+                <Input colorScheme="info" variant="rounded" style={{color:"#171717"}} placeholder="Password" 
                     type={isHidden ? "text" : "password"}
                     onChangeText={(text) => setValue({ ...value,password:text})}
                     InputRightElement={
@@ -78,7 +107,7 @@ function Login({navigation}) {
                             <Icon as={<MaterialIcons name={isHidden ? "visibility-off" : "visibility"}
                             
                             />}
-                            color="muted.100"
+                            color="#171717"
                             size={5}
                             ml="2"
                             name="home"/>
