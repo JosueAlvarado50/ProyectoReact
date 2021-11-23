@@ -35,7 +35,8 @@ import {
 import Login from "./components/Login";
 import Inicio from "./components/Inicio";
 import Menu from "./components/Menu";
-import Calendar from "./components/Calendario";
+import Calendar from "./components/Calendar";
+
 import viewTemp from "./components/viewTemp";
 
 import axios, { Axios } from "axios";
@@ -45,6 +46,8 @@ import viewPh from "./components/viewPh";
 import ViewPlants from "./components/ViewPlants";
 import viewHumedad from "./components/viewHumedad";
 import { backgroundColor } from "styled-system";
+import CardCalendar from "./components/CardCalendar";
+import CardTime from "./components/Calendario";
 
 const Stack = createNativeStackNavigator();
 
@@ -52,7 +55,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <NativeBaseProvider>
-         <Stack.Navigator initialRouteName="inicio">
+        <Stack.Navigator initialRouteName="inicio">
           <Stack.Group
             screenOptions={{ headerStyle: { backgroundColor: "#171717" } }}
           >
@@ -65,9 +68,8 @@ export default function App() {
                 headerTintColor: "#f0f9ff",
                 headerTitleStyle: {
                   fontWeight: "bold",
-                  color: "#171717"
+                  color: "#171717",
                 },
-                
               }}
               name="inicio"
               component={Inicio}
@@ -107,6 +109,8 @@ export default function App() {
               name="viewHumedad"
               component={viewHumedad}
             />
+            <Stack.Screen name="cardCalendar" component={CardCalendar} />
+            <Stack.Screen name="cardTime" component={CardTime} />
           </Stack.Group>
         </Stack.Navigator>
       </NativeBaseProvider>
