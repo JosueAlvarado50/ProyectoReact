@@ -22,12 +22,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 }); */
-import React from 'react';
+import React,{Component} from 'react';
 import { Center, Heading, Text, Container, NativeBaseProvider, Box,ImageBackground } from 'native-base';
 import Login from './components/Login'
 import Inicio from './components/Inicio';
 import Menu from './components/Menu';
-import Calendar from './components/Calendario';
+import Calendar from './components/Calendar';
+import CardCalendar from './components/CardCalendar';
+import CardTime from './components/Calendario';
 
 
 import axios, {Axios} from 'axios';
@@ -38,7 +40,7 @@ import ViewPlants from './components/ViewPlants';
 
 const Stack = createNativeStackNavigator();
 
-export default function App( ) {
+export default function App( )  {
   return (
     
     <NavigationContainer  >
@@ -69,6 +71,9 @@ export default function App( ) {
             <Stack.Screen name="ph" component={viewPh} />
             <Stack.Screen name="plants" component={ViewPlants} />
             <Stack.Screen name="calendar" component={Calendar} />
+            <Stack.Screen name="cardCalendar" component={CardCalendar}/>
+            <Stack.Screen name="cardTime" component={CardTime}/>
+
 
             
           </Stack.Navigator>

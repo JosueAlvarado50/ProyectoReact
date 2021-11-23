@@ -1,68 +1,42 @@
-/*import React from 'react';
-import ReactDOM from 'react-dom';
-//import './style.css';
-import App from './viewCalendar';
-import {MuiPickersUtilsProvider} from '@material-ui/pickers';
-import DateFnsUtils from '@date-io/date-fns';
-import esLocale from 'date-fns/locale/es'
-
-ReactDOM.render(
-	<React.StrictMode>
-        <MuiPickersUtilsProvider utils={DateFnsUtils} locale={esLocale}>
-		<App/>
-        </MuiPickersUtilsProvider>
-
-	</React.StrictMode>,
-	document.getElementById('root')
-);*/
-import React, { Component } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
-import CalendarPicker from 'react-native-calendar-picker';
-
-export default class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedStartDate: null,
-    };
-    this.onDateChange = this.onDateChange.bind(this);
-  }
-
-  onDateChange(date) {
-    this.setState({
-      selectedStartDate: date,
-    });
-  }
-  render() {
-    const { selectedStartDate } = this.state;
-    const startDate = selectedStartDate ? selectedStartDate.toString() : '';
-	console.log(startDate);
-
-    return (
-      <View style={styles.container}>
-        <CalendarPicker
-          onDateChange={this.onDateChange}
-        />
-
-        <View>
-          <Text>SELECTED DATE:{ startDate }</Text>
-		  
-        </View>
-      </View>
-	  
-    );
-  }
-  
-}
-
+import React, {useState} from 'react';
+import {View, Button, Platform, SafeAreaView , StyleSheet} from 'react-native';
+import DateTimePicker from '@react-native-community/datetimepicker';
+export default function Time() {
+   const [mydate, setDate] = useState(new Date());
+   const [displaymode, setMode] = useState('time');
+   const [isDisplayDate, setShow] = useState(false);
+   const changeSelectedDate = (event, selectedDate) => {
+      const currentDate = selectedDate || mydate;
+      setDate(currentDate);
+   };
+   const showMode = (currentMode) => {
+      setShow(true);
+      setMode(currentMode);
+   };
+   const displayTimepicker = () => {
+      showMode('time');
+   };
+   return (
+      <SafeAreaView style={styles.container}>
+         <View>
+            <Button onPress={displayTimepicker} title="Your Time Picker" />
+         </View>
+         {isDisplayDate && (
+            <DateTimePicker
+               value={mydate}
+               mode={displaymode}
+               is24Hour={true}
+               display="default"
+               onChange={changeSelectedDate}
+            />
+         )}
+      </SafeAreaView>
+   );
+};
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#FFFFFF',
-    marginTop: 100,
-  },
+   container: {
+      flex: 1,
+      alignItems: "center",
+      justifyContent: "center"
+   },
 });
