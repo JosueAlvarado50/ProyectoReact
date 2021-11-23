@@ -39,7 +39,7 @@ function viewTemp({ navigation }) {
   formData.append('fecha_hora', value.fecha_hora)
   useEffect(() => {
     const getData = async () =>{
-    const response = await axios.post('http://192.168.100.3/index_temp.php')
+    const response = await axios.post('http://172.17.204.47/index_temp.php')
     setUsers(response.data)
     console.log("USER", users)    
     }

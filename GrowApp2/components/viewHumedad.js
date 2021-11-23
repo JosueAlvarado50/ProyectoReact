@@ -55,7 +55,7 @@ function viewHumedad({ navigation }) {
   formData.append('fecha_hora', value.fecha_hora)
   useEffect(() => {
     const getData = async () =>{
-    const response = await axios.post('http://192.168.100.3/index_humedad.php')
+    const response = await axios.post('http://172.17.204.47/index_humedad.php')
     setUsers(response.data)
     console.log("USER", users)    
     }
