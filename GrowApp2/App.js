@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 }); */
-import React,{Component} from 'react';
+import React from 'react';
 import { Center, Heading, Text, Container, NativeBaseProvider, Box,ImageBackground } from 'native-base';
 import Login from './components/Login'
 import Inicio from './components/Inicio';
