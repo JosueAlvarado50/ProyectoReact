@@ -1,27 +1,3 @@
-/* import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { NativeBaseProvider, Box } from 'native-base';
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <NativeBaseProvider>
-        <Box>Hello world</Box>
-      </NativeBaseProvider>
-
-      <StatusBar style="auto" />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-}); */
 import React from 'react';
 import { Center, Heading, Text, Container, NativeBaseProvider, Box,ImageBackground } from 'native-base';
 import Login from './components/Login'
