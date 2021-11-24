@@ -36,7 +36,7 @@ import Login from "./components/Login";
 import Inicio from "./components/Inicio";
 import Menu from "./components/Menu";
 import Calendar from "./components/Calendar";
-
+/*   */
 import viewTemp from "./components/viewTemp";
 
 import axios, { Axios } from "axios";
@@ -49,9 +49,19 @@ import { backgroundColor } from "styled-system";
 import CardCalendar from "./components/CardCalendar";
 import CardTime from "./components/Calendario";
 
+import {gyroscope, magnetometer} from 'react-native-sensors';
+
+
+
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+
+  const subscription = magnetometer.subscribe(({ x, y, z, timestamp }) =>
+  console.log({ x, y, z, timestamp })
+);
+  
   return (
     <NavigationContainer>
       <NativeBaseProvider>
