@@ -49,7 +49,7 @@ import { backgroundColor } from "styled-system";
 import CardCalendar from "./components/CardCalendar";
 import CardTime from "./components/Calendario";
 
-import {gyroscope, magnetometer} from 'react-native-sensors';
+/* import {gyroscope, magnetometer} from 'react-native-sensors'; */
 
 
 
@@ -58,9 +58,9 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
 
-  const subscription = magnetometer.subscribe(({ x, y, z, timestamp }) =>
+  /* const subscription = magnetometer.subscribe(({ x, y, z, timestamp }) =>
   console.log({ x, y, z, timestamp })
-);
+); */
   
   return (
     <NavigationContainer>
