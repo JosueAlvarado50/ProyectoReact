@@ -22,15 +22,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 }); */
-import React from "react";
+import React, { useState } from "react";
 import {
   Center,
+  
   Heading,
   Text,
   Container,
   NativeBaseProvider,
   Box,
   ImageBackground,
+  StatusBar,
 } from "native-base";
 import Login from "./components/Login";
 import Inicio from "./components/Inicio";
@@ -51,7 +53,8 @@ import CardTime from "./components/Calendario";
 
 /* import {gyroscope, magnetometer} from 'react-native-sensors'; */
 
-
+const STYLES = ['default', 'dark-content', 'light-content'];
+const TRANSITIONS = ['fade', 'slide', 'none'];
 
 
 const Stack = createNativeStackNavigator();
@@ -61,9 +64,17 @@ export default function App() {
   /* const subscription = magnetometer.subscribe(({ x, y, z, timestamp }) =>
   console.log({ x, y, z, timestamp })
 ); */
-  
+const [hidden, setHidden] = useState(false);
+const [statusBarStyle, setStatusBarStyle] = useState(STYLES[0]);
+const [statusBarTransition, setStatusBarTransition] = useState(TRANSITIONS[0]);
   return (
+    
     <NavigationContainer>
+      <StatusBar  animated={true}
+        backgroundColor="#111827"
+        barStyle={statusBarStyle}
+        showHideTransition={statusBarTransition}
+        hidden={hidden}></StatusBar>
       <NativeBaseProvider>
         <Stack.Navigator initialRouteName="inicio">
           <Stack.Group
@@ -73,49 +84,119 @@ export default function App() {
               options={{
                 title: "Inicio",
                 headerStyle: {
-                  backgroundColor: "#f0f9ff",
+                  backgroundColor: "#111827",
                 },
                 headerTintColor: "#f0f9ff",
                 headerTitleStyle: {
                   fontWeight: "bold",
-                  color: "#171717",
+                  color: "#f0f9ff",
                 },
               }}
               name="inicio"
               component={Inicio}
             />
             <Stack.Screen
-              options={{ title: "Login" }}
+             options={{
+              title: "Inicio",
+              headerStyle: {
+                backgroundColor: "#111827",
+              },
+              headerTintColor: "#f0f9ff",
+              headerTitleStyle: {
+                fontWeight: "bold",
+                color: "#f0f9ff",
+              },
+            }}
               name="login"
               component={Login}
             />
             <Stack.Screen
-              options={{ title: "" }}
+              options={{
+                title: "Inicio",
+                headerStyle: {
+                  backgroundColor: "#111827",
+                },
+                headerTintColor: "#f0f9ff",
+                headerTitleStyle: {
+                  fontWeight: "bold",
+                  color: "#f0f9ff",
+                },
+              }}
               name="menu"
               component={Menu}
             />
             <Stack.Screen
-              options={{ title: "PH" }}
+              options={{
+                title: "Inicio",
+                headerStyle: {
+                  backgroundColor: "#111827",
+                },
+                headerTintColor: "#f0f9ff",
+                headerTitleStyle: {
+                  fontWeight: "bold",
+                  color: "#f0f9ff",
+                },
+              }}
               name="ph"
               component={viewPh}
             />
             <Stack.Screen
-              options={{ title: "Plants" }}
+             options={{
+              title: "Inicio",
+              headerStyle: {
+                backgroundColor: "#111827",
+              },
+              headerTintColor: "#f0f9ff",
+              headerTitleStyle: {
+                fontWeight: "bold",
+                color: "#f0f9ff",
+              },
+            }}
               name="plants"
               component={ViewPlants}
             />
             <Stack.Screen
-              options={{ title: "Calendar" }}
+              options={{
+                title: "Inicio",
+                headerStyle: {
+                  backgroundColor: "#111827",
+                },
+                headerTintColor: "#f0f9ff",
+                headerTitleStyle: {
+                  fontWeight: "bold",
+                  color: "#f0f9ff",
+                },
+              }}
               name="calendar"
               component={Calendar}
             />
             <Stack.Screen
-              options={{ title: "Temperature" }}
+              options={{
+                title: "Inicio",
+                headerStyle: {
+                  backgroundColor: "#111827",
+                },
+                headerTintColor: "#f0f9ff",
+                headerTitleStyle: {
+                  fontWeight: "bold",
+                  color: "#f0f9ff",
+                },
+              }}
               name="temp"
               component={viewTemp}
             />
             <Stack.Screen
-              options={{ title: "Humidity" }}
+              options={{
+                title: "Inicio",
+                headerStyle: {
+                  backgroundColor: "#111827",
+                },
+                headerTintColor: "#f0f9ff",
+                headerTitleStyle: {
+                  fontWeight: "bold",
+                  color: "#f0f9ff",
+                },
+              }}
               name="viewHumedad"
               component={viewHumedad}
             />
