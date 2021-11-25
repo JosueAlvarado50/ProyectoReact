@@ -3,6 +3,7 @@ import {
   Image,
   Center,
   Heading,
+  useToast,
   Text,
   Container,
   NativeBaseProvider,
@@ -24,6 +25,7 @@ var avatarIconn = require("../assets/avatar.png");
 
 function Login({ navigation }) {
   const [isHidden, setIsHidden] = useState(false);
+  const toast = useToast()
   const [value, setValue] = useState({
     nickname: "",
     password: "",
@@ -48,6 +50,13 @@ function Login({ navigation }) {
           console.log(response.data);
           if (response.data == true) {
             navigation.navigate("menu");
+          }else{
+            toast.show({
+              duration:1500,
+              title: "Invalid email address or password",
+              status: "warning",
+              description: "Please enter a valid email address",
+            })
           }
         },
         (error) => {
@@ -58,8 +67,6 @@ function Login({ navigation }) {
   const Submit = () => {
     return (
       <Button
-        
-        
         colorScheme="lightBlue"
         variant="rounded"
         backgroundColor="green.400"
