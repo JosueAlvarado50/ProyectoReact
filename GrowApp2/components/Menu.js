@@ -40,6 +40,8 @@ var ph = require("../assets/PH.png");
 var humedad = require("../assets/humedad.png");
 var calendario = require("../assets/calendario.png");
 var Luminosidad = require("../assets/icono_luminosidad.png");
+var camara = require("../assets/camara.png");
+
 
 function Menu({ navigation }) {
   const { isOpen, onToggle } = useDisclose();
@@ -270,6 +272,38 @@ function Menu({ navigation }) {
                   </Text>
                 </Button>
               </Center>
+              <Stack direction="row" mb="2.5" mt="1.5" space={5} alignSelf="center">
+          <Center
+            w="150px"
+            h="140px"
+            marginTop="-9"
+            bg="#24a46c"
+            rounded="sm"
+            _text={{
+              
+              fontWeight: "medium",
+            }}
+            shadow={"3"}
+          >
+            <Button
+              style={{ width: "100%", height: "100%" }}
+              //colorScheme="transparent"
+              backgroundColor="#24a46c"
+              onPress={() => navigation.navigate('camara')}
+            >
+              <Image
+                //source={require('../assets/semillas.png')}
+                source={camara}
+                alt="Alternate Text"
+                size={"md"}
+              />
+              <Text bold color="white" textAlign="center" >Camara</Text>
+            </Button>
+          </Center>
+          </Stack>
+                
+
+
               <Center
                 bg="#94247c"
                 size="150"

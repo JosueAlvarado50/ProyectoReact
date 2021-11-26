@@ -25,7 +25,6 @@ const styles = StyleSheet.create({
 import React, { useState } from "react";
 import {
   Center,
-  
   Heading,
   Text,
   Container,
@@ -50,31 +49,38 @@ import viewHumedad from "./components/viewHumedad";
 import { backgroundColor } from "styled-system";
 import CardCalendar from "./components/CardCalendar";
 import CardTime from "./components/Calendario";
+import Music from "./components/Music";
+import PictureScreen from "./components/PictureScreen";
+import MenuCamara from "./components/MenuCamara";
+import { Audio, Video } from 'expo-av';
+var camara = require("./assets/camara.png");
+
 
 /* import {gyroscope, magnetometer} from 'react-native-sensors'; */
 
-const STYLES = ['default', 'dark-content', 'light-content'];
-const TRANSITIONS = ['fade', 'slide', 'none'];
-
+const STYLES = ["default", "dark-content", "light-content"];
+const TRANSITIONS = ["fade", "slide", "none"];
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-
   /* const subscription = magnetometer.subscribe(({ x, y, z, timestamp }) =>
   console.log({ x, y, z, timestamp })
 ); */
-const [hidden, setHidden] = useState(false);
-const [statusBarStyle, setStatusBarStyle] = useState(STYLES[0]);
-const [statusBarTransition, setStatusBarTransition] = useState(TRANSITIONS[0]);
+  const [hidden, setHidden] = useState(false);
+  const [statusBarStyle, setStatusBarStyle] = useState(STYLES[0]);
+  const [statusBarTransition, setStatusBarTransition] = useState(
+    TRANSITIONS[0]
+  );
   return (
-    
     <NavigationContainer>
-      <StatusBar  animated={true}
+      <StatusBar
+        animated={true}
         backgroundColor="#111827"
         barStyle={statusBarStyle}
         showHideTransition={statusBarTransition}
-        hidden={hidden}></StatusBar>
+        hidden={hidden}
+      ></StatusBar>
       <NativeBaseProvider>
         <Stack.Navigator initialRouteName="inicio">
           <Stack.Group
@@ -92,21 +98,67 @@ const [statusBarTransition, setStatusBarTransition] = useState(TRANSITIONS[0]);
                   color: "#f0f9ff",
                 },
               }}
+              name="camara"
+              component={MenuCamara}
+            />
+            <Stack.Screen
+              options={{
+                title: "Inicio",
+                headerStyle: {
+                  backgroundColor: "#111827",
+                },
+                headerTintColor: "#f0f9ff",
+                headerTitleStyle: {
+                  fontWeight: "bold",
+                  color: "#f0f9ff",
+                },
+              }}
+              name="music"
+              component={Music}
+            />
+            <Stack.Screen
+              options={{
+                title: "Inicio",
+                headerStyle: {
+                  backgroundColor: "#111827",
+                },
+                headerTintColor: "#f0f9ff",
+                headerTitleStyle: {
+                  fontWeight: "bold",
+                  color: "#f0f9ff",
+                },
+              }}
+              name="picture"
+              component={PictureScreen}
+            />
+
+            <Stack.Screen
+              options={{
+                title: "Inicio",
+                headerStyle: {
+                  backgroundColor: "#111827",
+                },
+                headerTintColor: "#f0f9ff",
+                headerTitleStyle: {
+                  fontWeight: "bold",
+                  color: "#f0f9ff",
+                },
+              }}
               name="inicio"
               component={Inicio}
             />
             <Stack.Screen
-             options={{
-              title: "Inicio",
-              headerStyle: {
-                backgroundColor: "#111827",
-              },
-              headerTintColor: "#f0f9ff",
-              headerTitleStyle: {
-                fontWeight: "bold",
-                color: "#f0f9ff",
-              },
-            }}
+              options={{
+                title: "Inicio",
+                headerStyle: {
+                  backgroundColor: "#111827",
+                },
+                headerTintColor: "#f0f9ff",
+                headerTitleStyle: {
+                  fontWeight: "bold",
+                  color: "#f0f9ff",
+                },
+              }}
               name="login"
               component={Login}
             />
@@ -141,17 +193,17 @@ const [statusBarTransition, setStatusBarTransition] = useState(TRANSITIONS[0]);
               component={viewPh}
             />
             <Stack.Screen
-             options={{
-              title: "Inicio",
-              headerStyle: {
-                backgroundColor: "#111827",
-              },
-              headerTintColor: "#f0f9ff",
-              headerTitleStyle: {
-                fontWeight: "bold",
-                color: "#f0f9ff",
-              },
-            }}
+              options={{
+                title: "Inicio",
+                headerStyle: {
+                  backgroundColor: "#111827",
+                },
+                headerTintColor: "#f0f9ff",
+                headerTitleStyle: {
+                  fontWeight: "bold",
+                  color: "#f0f9ff",
+                },
+              }}
               name="plants"
               component={ViewPlants}
             />
