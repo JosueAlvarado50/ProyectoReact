@@ -135,7 +135,7 @@ function Login({ navigation }) {
                   w="250"
                 />
                 <Input
-                margin="2"
+                marginTop="4"
                   colorScheme="info"
                   variant="rounded"
                   style={{ color: "#ecfeff" }}
@@ -155,6 +155,7 @@ function Login({ navigation }) {
                   }
                 />
                 <Input
+                marginTop="2"
                  marginBottom="3"
                   colorScheme="info"
                   variant="rounded"
