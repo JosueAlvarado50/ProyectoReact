@@ -97,11 +97,18 @@ function Login({ navigation }) {
         variants: {
           rounded: ({ colorScheme }) => {
             return {
-              bg: `${colorScheme}.100`,
+              bg: "transparent",
               rounded: "full",
             };
           },
         },
+        defaultProps: {
+          height: 45,
+          width:40,
+          margin: 1,
+          
+          },
+        
       },
     },
   });
@@ -111,7 +118,7 @@ function Login({ navigation }) {
       <Box
         flex={15}
         bg="#111827"
-        p="2"
+        
         alignItems="center"
         justifyContent="center"
       >
@@ -128,17 +135,17 @@ function Login({ navigation }) {
                   w="250"
                 />
                 <Input
-                margin="4"
+                margin="2"
                   colorScheme="info"
                   variant="rounded"
-                  style={{ color: "#171717" }}
+                  style={{ color: "#ecfeff" }}
                   size="lg"
                   InputLeftElement={
                     <Icon
                       as={<MaterialIcons name="person" />}
                       size={5}
                       ml="2"
-                      color="#171717"
+                      color="#ecfeff"
                     />
                   }
                   I
@@ -151,8 +158,8 @@ function Login({ navigation }) {
                  marginBottom="3"
                   colorScheme="info"
                   variant="rounded"
-                  style={{ color: "#171717" }}
-                  size="lg"
+                  style={{ color: "#ecfeff" }}
+                  size="md"
                   placeholder="Password"
                   type={isHidden ? "text" : "password"}
                   onChangeText={(text) =>
@@ -166,7 +173,7 @@ function Login({ navigation }) {
                             name={isHidden ? "visibility-off" : "visibility"}
                           />
                         }
-                        color="#171717"
+                        color="#ecfeff"
                         size={5}
                         ml="2"
                         name="home"
