@@ -1,46 +1,13 @@
-/* import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { NativeBaseProvider, Box } from 'native-base';
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <NativeBaseProvider>
-        <Box>Hello world</Box>
-      </NativeBaseProvider>
-
-      <StatusBar style="auto" />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-}); */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
-  Center,
-  
-  Heading,
-  Text,
-  Container,
   NativeBaseProvider,
-  Box,
-  ImageBackground,
   StatusBar,
 } from "native-base";
 import Login from "./components/Login";
 import Inicio from "./components/Inicio";
 import Menu from "./components/Menu";
 import Calendar from "./components/Calendar";
-/*   */
 import viewTemp from "./components/viewTemp";
-
 import axios, { Axios } from "axios";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -50,25 +17,34 @@ import viewHumedad from "./components/viewHumedad";
 import { backgroundColor } from "styled-system";
 import CardCalendar from "./components/CardCalendar";
 import CardTime from "./components/Calendario";
-
+import { collection, getDocs } from "firebase/firestore"; 
+import db from "./firebase/firebaseconfig";
 /* import {gyroscope, magnetometer} from 'react-native-sensors'; */
-
 const STYLES = ['default', 'dark-content', 'light-content'];
 const TRANSITIONS = ['fade', 'slide', 'none'];
-
-
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-
   /* const subscription = magnetometer.subscribe(({ x, y, z, timestamp }) =>
   console.log({ x, y, z, timestamp })
 ); */
 const [hidden, setHidden] = useState(false);
 const [statusBarStyle, setStatusBarStyle] = useState(STYLES[0]);
 const [statusBarTransition, setStatusBarTransition] = useState(TRANSITIONS[0]);
+
+  useEffect(() => {
+
+    const obtenerDatos = async()=>{
+      const datos = await getDocs(collection(db, 'usuarios'));
+      datos.forEach((document) =>{
+        console.log(document.datos());
+      }); 
+      
+    }
+    obtenerDatos();    
+    }, []);
+
   return (
-    
     <NavigationContainer>
       <StatusBar  animated={true}
         backgroundColor="#111827"
@@ -208,3 +184,27 @@ const [statusBarTransition, setStatusBarTransition] = useState(TRANSITIONS[0]);
     </NavigationContainer>
   );
 }
+/* import { StatusBar } from 'expo-status-bar';
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { NativeBaseProvider, Box } from 'native-base';
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <NativeBaseProvider>
+        <Box>Hello world</Box>
+      </NativeBaseProvider>
+
+      <StatusBar style="auto" />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+}); */
