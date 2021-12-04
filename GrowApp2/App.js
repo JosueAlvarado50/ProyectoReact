@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  NativeBaseProvider,
-  StatusBar,
-} from "native-base";
+import { NativeBaseProvider, StatusBar } from "native-base";
 import Login from "./components/Login";
 import Inicio from "./components/Inicio";
 import Menu from "./components/Menu";
@@ -17,40 +14,45 @@ import viewHumedad from "./components/viewHumedad";
 import { backgroundColor } from "styled-system";
 import CardCalendar from "./components/CardCalendar";
 import CardTime from "./components/Calendario";
-import { collection, getDocs } from "firebase/firestore"; 
-import db from "./firebase/firebaseconfig";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "./firebase/firebaseconfig";
 /* import {gyroscope, magnetometer} from 'react-native-sensors'; */
-const STYLES = ['default', 'dark-content', 'light-content'];
-const TRANSITIONS = ['fade', 'slide', 'none'];
+const STYLES = ["default", "dark-content", "light-content"];
+const TRANSITIONS = ["fade", "slide", "none"];
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   /* const subscription = magnetometer.subscribe(({ x, y, z, timestamp }) =>
   console.log({ x, y, z, timestamp })
 ); */
-const [hidden, setHidden] = useState(false);
-const [statusBarStyle, setStatusBarStyle] = useState(STYLES[0]);
-const [statusBarTransition, setStatusBarTransition] = useState(TRANSITIONS[0]);
+  const [hidden, setHidden] = useState(false);
+  const [statusBarStyle, setStatusBarStyle] = useState(STYLES[0]);
+  const [statusBarTransition, setStatusBarTransition] = useState(
+    TRANSITIONS[0]
+  );
 
   useEffect(() => {
-
-    const obtenerDatos = async()=>{
-      const datos = await getDocs(collection(db, 'usuarios'));
-      datos.forEach((document) =>{
-        console.log(document.datos());
-      }); 
+    const obtenerDatos = async () => {
+      const querySnapshot = await getDocs(collection(db, "usuarios"));
       
-    }
-    obtenerDatos();    
-    }, []);
+      querySnapshot.forEach((doc) => {
+       console.log(doc.id, doc.nombre);
+        //console.log(`${doc.id}, ${doc.nombre} => ${doc.data()}`);
+       
+      });
+    };
+    obtenerDatos();
+  }, []);
 
   return (
     <NavigationContainer>
-      <StatusBar  animated={true}
+      <StatusBar
+        animated={true}
         backgroundColor="#111827"
         barStyle={statusBarStyle}
         showHideTransition={statusBarTransition}
-        hidden={hidden}></StatusBar>
+        hidden={hidden}
+      ></StatusBar>
       <NativeBaseProvider>
         <Stack.Navigator initialRouteName="inicio">
           <Stack.Group
@@ -72,17 +74,17 @@ const [statusBarTransition, setStatusBarTransition] = useState(TRANSITIONS[0]);
               component={Inicio}
             />
             <Stack.Screen
-             options={{
-              title: "Inicio",
-              headerStyle: {
-                backgroundColor: "#111827",
-              },
-              headerTintColor: "#f0f9ff",
-              headerTitleStyle: {
-                fontWeight: "bold",
-                color: "#f0f9ff",
-              },
-            }}
+              options={{
+                title: "Inicio",
+                headerStyle: {
+                  backgroundColor: "#111827",
+                },
+                headerTintColor: "#f0f9ff",
+                headerTitleStyle: {
+                  fontWeight: "bold",
+                  color: "#f0f9ff",
+                },
+              }}
               name="login"
               component={Login}
             />
@@ -117,17 +119,17 @@ const [statusBarTransition, setStatusBarTransition] = useState(TRANSITIONS[0]);
               component={viewPh}
             />
             <Stack.Screen
-             options={{
-              title: "Inicio",
-              headerStyle: {
-                backgroundColor: "#111827",
-              },
-              headerTintColor: "#f0f9ff",
-              headerTitleStyle: {
-                fontWeight: "bold",
-                color: "#f0f9ff",
-              },
-            }}
+              options={{
+                title: "Inicio",
+                headerStyle: {
+                  backgroundColor: "#111827",
+                },
+                headerTintColor: "#f0f9ff",
+                headerTitleStyle: {
+                  fontWeight: "bold",
+                  color: "#f0f9ff",
+                },
+              }}
               name="plants"
               component={ViewPlants}
             />
